@@ -1,0 +1,5 @@
+{"level":"error","ts":1693826973.1423144,"caller":"mylog/log.go:43","msg":"add log250D:/learn_tools/Go1.19/src/runtime/proc.go"}
+{"level":"error","ts":1693826994.3496914,"caller":"mylog/log.go:43","msg":"add log250D:/learn_tools/Go1.19/src/runtime/proc.go"}
+{"level":"error","ts":1693827029.6797857,"caller":"mylog/log.go:43","msg":"add log250D:/learn_tools/Go1.19/src/runtime/proc.go"}
+{"level":"error","ts":1693827036.9937396,"caller":"mylog/log.go:43","msg":"add log63F:/go_code/test/main.go"}
+{"level":"error","ts":1693827073.7186146,"caller":"mylog/log.go:43","msg":"add log42F:/go_code/test/mylog/log.go"}
