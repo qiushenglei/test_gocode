@@ -5,17 +5,19 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/alibaba/sentinel-golang/logging"
-	"github.com/qiushenglei/gin-skeleton/pkg/errorpkg"
 	"log"
 	"net"
 	"reflect"
+
+	"github.com/qiushenglei/gin-skeleton/pkg/errorpkg"
 )
 
 type QProto struct {
 	reader *bufio.Reader
 	writer *bufio.Writer
 	token  string
+
+	c net.Conn
 }
 
 type Header struct {
@@ -35,6 +37,7 @@ func NewQProto(conn net.Conn) *QProto {
 	return &QProto{
 		reader: r,
 		writer: w,
+		c:      conn,
 	}
 }
 
@@ -43,8 +46,10 @@ func (p *QProto) Verify(token string) error {
 	if err != nil {
 		return err
 	}
-	fmt.Println(n)
+	_ = p.writer.Flush()
+	fmt.Println("验证发送消息成功，长度:", n)
 	//p.Send(0, token)
+	fmt.Println("开始读取数据")
 	response, err := p.Recv()
 	if err != nil {
 		return err
@@ -59,9 +64,9 @@ func (p *QProto) Auth() error {
 	//token, err := p.reader.Peek(10)
 	token := make([]byte, 10)
 	_, err := p.reader.Read(token)
-	fmt.Println(token, 1111)
+	fmt.Println(string(token), 1111)
 	if err != nil {
-		fmt.Println(token, 22222)
+		fmt.Println(string(token), 22222)
 		return err
 	}
 	return p.authentication(token)
@@ -70,6 +75,7 @@ func (p *QProto) Auth() error {
 func (p *QProto) authentication(token []byte) error {
 	if string(token) == "6666666666" {
 		p.token = "6666666666"
+		return nil
 	}
 	return errorpkg.ErrNoLogin
 }
@@ -106,11 +112,13 @@ func (p *QProto) Encode(h any, content []byte) error {
 	}
 	body := fmt.Sprintf("%s\n%s", header, content)
 
-	_, err = p.writer.Write([]byte(body))
+	n, err := p.writer.Write([]byte(body))
+	_ = p.writer.Flush() // 把缓冲区的数据给对端
+	fmt.Println("发送消息完毕，长度:", n)
 	return err
 }
 
-func (p *QProto) Send(code int, response any) {
+func (p *QProto) Send(code int, response any) error {
 	v := reflect.ValueOf(response)
 	var content []byte
 	switch v.Kind() {
@@ -124,8 +132,9 @@ func (p *QProto) Send(code int, response any) {
 		Code:   code,
 	}
 	if err := p.Encode(h, content); err != nil {
-		logging.Error(err, "encode proto fail")
+		return err
 	}
+	return nil
 }
 
 func (p *QProto) Recv() (*Response, error) {
