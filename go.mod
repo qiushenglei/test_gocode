@@ -4,7 +4,7 @@ go 1.19
 
 require (
 	github.com/alibaba/sentinel-golang v1.0.4
-	github.com/qiushenglei/gin-skeleton v0.0.0-20231031133848-c7d5cee898dd
+	github.com/qiushenglei/gin-skeleton v0.0.0-20231104054151-5cac86cbb9ae
 	github.com/spf13/cobra v1.7.0
 	go.uber.org/zap v1.25.0
 	golang.org/x/net v0.15.0

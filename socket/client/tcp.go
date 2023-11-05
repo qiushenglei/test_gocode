@@ -1,6 +1,7 @@
 package client
 
 import (
+	"context"
 	"fmt"
 	"github.com/alibaba/sentinel-golang/logging"
 	"net"
@@ -15,7 +16,8 @@ func Dial() {
 		panic(err)
 	}
 
-	parser := proto.NewQProto(conn)
+	ctx, cancel := context.WithCancel(context.Background())
+	parser := proto.NewQProto(ctx, conn, cancel)
 
 	err = parser.Verify("6666666666")
 	if err != nil {
@@ -27,7 +29,8 @@ func Dial() {
 		response, err := parser.Recv()
 		if err != nil {
 			logging.Error(err, "recv fail 1")
-			continue
+			parser.Close("client")
+			return
 		}
 		fmt.Println(string(response.Body))
 		time.Sleep(3 * time.Second)
