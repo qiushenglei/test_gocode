@@ -3,7 +3,6 @@ package client
 import (
 	"context"
 	"fmt"
-	"github.com/alibaba/sentinel-golang/logging"
 	"net"
 	"testproj/socket/proto"
 	"time"
@@ -28,7 +27,7 @@ func Dial() {
 		parser.Send(0, "nihaoya")
 		response, err := parser.Recv()
 		if err != nil {
-			logging.Error(err, "recv fail 1")
+			//logging.Error(err, "recv fail 1")
 			parser.Close("client")
 			return
 		}

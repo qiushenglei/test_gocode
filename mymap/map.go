@@ -2,7 +2,6 @@ package mymap
 
 import (
 	"fmt"
-	"sync"
 	"time"
 )
 
@@ -40,16 +39,27 @@ func UpdateMap() {
 }
 
 func Cap() {
-	a := make(map[string]interface{})
+	a := make(map[string]interface{}, 1)
 
 	a["as"] = 1233
-	fmt.Printf("%p\n", a)
+	fmt.Printf("%p %d\n ", a, len(a))
 	a["as1"] = 1233
-	fmt.Printf("%p\n", a)
+	fmt.Printf("%p %d\n ", a, len(a))
+
 	a["as2"] = 1233
-	fmt.Printf("%p\n", a)
+	fmt.Printf("%p %d\n ", a, len(a))
+
 	a["as3"] = 1233
-	fmt.Printf("%p\n", a)
+	fmt.Printf("%p %d\n ", a, len(a))
+	a["as4"] = 1233
+	fmt.Printf("%p %d\n ", a, len(a))
+	a["as5"] = 1233
+	fmt.Printf("%p %d\n ", a, len(a))
+	a["as6"] = 1233
+	fmt.Printf("%p %d\n ", a, len(a))
+	a["as7"] = 1233
+	fmt.Printf("%p %d\n ", a, len(a))
+
 	fmt.Println(len(a))
 }
 
@@ -105,5 +115,5 @@ func Delete() {
 }
 
 func ThreadSafe() {
-	sync.Map{}
+	//sync.Map{}
 }

@@ -1,5 +1,10 @@
 package mydefer
 
+import (
+	"fmt"
+	"time"
+)
+
 //	func A(b int) {
 //		fmt.Println("A func print: ", b, &b)
 //	}
@@ -30,21 +35,28 @@ package mydefer
 //		num = 20
 //		return num
 //	}
-var num = 3
 
-//func Example1() int {
-//	defer fmt.Println("Deferred statement")
-//
-//	num = 10
-//
-//	func() {
-//		num = 5
-//	}()
-//
-//	time.Sleep(time.Second)
-//	fmt.Println(num)
-//	return num
-//}
+// var num = 3
+func Example1() (a int) {
+	defer fmt.Println("Deferred statement")
+	defer func() {
+		fmt.Println(a)
+		a++
+	}()
+	defer fmt.Println(a)
+
+	num := 10
+
+	func() {
+		num = 5
+	}()
+
+	num++
+	time.Sleep(time.Second)
+	//fmt.Println(num)
+	return 3
+}
+
 //
 //func Example2() func() {
 //	defer fmt.Println("Deferred statement")
@@ -61,26 +73,47 @@ var num = 3
 //	return a
 //}
 
-func Example3() {
+//func Example3() {
+//
+//	num = 333
+//	defer func() {
+//		num++
+//	}()
+//
+//	a := 1
+//	funca := func() {
+//		a++
+//	}
+//	funca()
+//
+//	ch := make(chan struct{}, 1)
+//
+//	b := make([]int, 0)
+//	for k, _ := range b {
+//		k++
+//	}
+//
+//	ch <- struct{}{}
+//	return
+//}
 
-	num = 333
+func Panic() {
 	defer func() {
-		num++
+		fmt.Println("panic defer1 ")
+		if r := recover(); r != nil {
+			fmt.Println("panic defer2 ")
+		}
 	}()
 
-	a := 1
-	funca := func() {
-		a++
-	}
-	funca()
+	defer func() {
+		if r := recover(); r != nil {
+			fmt.Println("panic defer3 ")
+		}
+	}()
 
-	ch := make(chan struct{}, 1)
+	panic(123)
 
-	b := make([]int, 0)
-	for k, _ := range b {
-		k++
-	}
-
-	ch <- struct{}{}
-	return
+	defer func() {
+		fmt.Println("panic defer3 ")
+	}()
 }

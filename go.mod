@@ -4,6 +4,8 @@ go 1.19
 
 require (
 	github.com/alibaba/sentinel-golang v1.0.4
+	github.com/go-playground/validator/v10 v10.15.5
+	github.com/imroc/req/v2 v2.1.0
 	github.com/qiushenglei/gin-skeleton v0.0.0-20231104054151-5cac86cbb9ae
 	github.com/spf13/cobra v1.7.0
 	go.uber.org/zap v1.25.0
@@ -17,11 +19,9 @@ require (
 	github.com/gabriel-vasile/mimetype v1.4.2 // indirect
 	github.com/go-playground/locales v0.14.1 // indirect
 	github.com/go-playground/universal-translator v0.18.1 // indirect
-	github.com/go-playground/validator/v10 v10.15.5 // indirect
 	github.com/golang/protobuf v1.5.3 // indirect
 	github.com/hashicorp/errwrap v1.0.0 // indirect
 	github.com/hashicorp/go-multierror v1.1.1 // indirect
-	github.com/imroc/req/v2 v2.1.0 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/leodido/go-urn v1.2.4 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect

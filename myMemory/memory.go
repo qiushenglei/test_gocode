@@ -1,6 +1,8 @@
 package myMemory
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func Memory() {
 	var a *int
@@ -21,6 +23,10 @@ func Memory1() {
 	a := new(int)
 	*a = b
 	fmt.Println(a)
+	//math.Sqrt()
+	//math.Floor()
+	//strconv.Itoa()
+	//strconv.Atoi()
 }
 
 type Person struct {

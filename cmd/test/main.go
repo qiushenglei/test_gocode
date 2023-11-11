@@ -3,11 +3,25 @@ package main
 import (
 	"fmt"
 	"reflect"
-	"testproj/mycontext"
+	"testproj/mychannel"
 )
 
 func main() {
-	mycontext.WithTimeout()
+	mychannel.Sequence()
+	//mysync.SafeMap()
+	//mysync.UnsafeMap()
+	//mycrypto.Md5()
+	//myinterface.Interface3()
+	//myinterface.Interface2()
+	//mychannel.SendBlock2()
+	//mychannel.SendBlock()
+	//mychannel.SendBlock3()
+	//mydefer.Panic()
+	//res := mydefer.Example1()
+	//fmt.Println(res)
+	//myinterface.Operate()
+	//mymap.Cap()
+	//mycontext.WithTimeout()
 	//mycontext.WithCancel1()
 	//mydatatype.Rune()
 	//mymap.Cap()
