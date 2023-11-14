@@ -7,7 +7,14 @@ import (
 )
 
 func main() {
-	mychannel.Sequence()
+	//mysync.Pool()
+	//mysync.Once()
+	//mychannel.MSender1Receiver()
+	mychannel.CaseInIO()
+	//mychannel.MSenderNReceiver()
+	//mychannel.RangeChan()
+	//mychannel.IsClosed()
+	//mychannel.Sequence()
 	//mysync.SafeMap()
 	//mysync.UnsafeMap()
 	//mycrypto.Md5()

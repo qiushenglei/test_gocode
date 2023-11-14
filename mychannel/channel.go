@@ -1,8 +1,14 @@
 package mychannel
 
 import (
+	"context"
 	"fmt"
+	"math/rand"
+	"os"
+	"os/signal"
+	"strconv"
 	"sync"
+	"syscall"
 	"time"
 )
 
@@ -223,4 +229,177 @@ func Sequence() {
 	dogch <- struct{}{}
 	wg.Wait()
 	fmt.Println("end")
+}
+
+func IsClosed() {
+	ch := make(chan struct{})
+
+	go func() {
+		close(ch)
+	}()
+	<-ch
+
+	v, ok := <-ch
+	if ok {
+		fmt.Println("is ok", v)
+	} else {
+		fmt.Println("is closed", v)
+	}
+
+}
+
+func RangeChan() {
+	ch := make(chan struct{})
+
+	go func() {
+		ch <- struct{}{}
+		time.Sleep(time.Second)
+		fmt.Println("begin close chan")
+		close(ch)
+		fmt.Println("chan close done")
+	}()
+
+	for val := range ch {
+		fmt.Println(val)
+	}
+}
+
+func MSender1Receiver() {
+	dataCh := make(chan int)
+	stopCh := make(chan struct{})
+	signalChan := make(chan os.Signal)
+	signal.Notify(signalChan, syscall.SIGINT, syscall.SIGTERM)
+	// 随机种子，最好都加上
+	rand.Seed(time.Now().Unix())
+
+	// sender
+	for i := 0; i < 2; i++ {
+		index := i
+		go func() {
+			istr := strconv.Itoa(index)
+			for {
+
+				select {
+				case <-stopCh:
+					fmt.Println(istr, " num get close stopch")
+					return
+				case dataCh <- rand.Intn(100): //随机数
+					time.Sleep(1 * time.Second)
+				}
+
+			}
+		}()
+	}
+
+	// 读协程监听信号。向stopch发送close，退出sender，gc自动回收dataChan通道
+	for {
+		select {
+		case val := <-dataCh:
+			fmt.Println(val)
+		case <-signalChan:
+			fmt.Println("receiver get notify signal")
+			close(stopCh)
+			time.Sleep(3 * time.Second)
+			return
+		}
+	}
+
+}
+
+func MSenderNReceiver() {
+	dataCh := make(chan int)
+	stopCh := make(chan struct{})
+	signalChan := make(chan os.Signal)
+	signal.Notify(signalChan, syscall.SIGINT, syscall.SIGTERM)
+	// 随机种子，最好都加上
+	rand.Seed(time.Now().Unix())
+
+	// sender
+	for i := 0; i < 2; i++ {
+		index := i
+		go func() {
+			istr := strconv.Itoa(index)
+			for {
+
+				select {
+				case <-stopCh:
+					fmt.Println(istr, " num get close stopch")
+					return
+				case dataCh <- rand.Intn(100): //随机数
+					time.Sleep(1 * time.Second)
+				}
+
+			}
+		}()
+	}
+
+	// 读协程监听信号。向stopch发送close，退出sender，gc自动回收dataChan通道
+	wg := sync.WaitGroup{}
+	for i := 0; i < 2; i++ {
+		wg.Add(1)
+		index := i
+		go func() {
+			defer wg.Done()
+			stri := strconv.Itoa(index)
+			for {
+				select {
+				case val := <-dataCh:
+					fmt.Println(val)
+				case <-signalChan:
+					fmt.Println(stri, " num receiver get notify signal, ")
+					close(stopCh)
+					time.Sleep(3 * time.Second)
+				case <-stopCh:
+					fmt.Println(stri, " num receiver start stop")
+					return
+				}
+			}
+		}()
+
+	}
+	wg.Wait()
+}
+
+func CaseInIO() {
+	c := context.Background()
+	c, _ = context.WithTimeout(c, time.Second*3)
+
+	//urlA := "http://example.com/apiA"
+	//urlB := "http://example.com/apiB"
+
+	errCh := make(chan error, 1) // 创建一个用于传递错误信息的 channel
+
+	var wg sync.WaitGroup
+	wg.Add(2)
+
+	go func() {
+		// 发起 A 请求
+		defer wg.Done()
+
+		fmt.Println("start A request")
+	}()
+
+	go func() {
+		defer wg.Done()
+		// 监听 context 的 Done 信号
+		select {
+		case <-c.Done():
+			fmt.Println("B request canceled")
+		default:
+			// 发起 B 请求
+			fmt.Println("start B default, soon sleep 5s")
+			time.Sleep(time.Second * 5)
+			fmt.Println("这里会会执行吗？")
+		}
+	}()
+
+	wg.Wait() // 等待两个协程完成
+
+	// 等待错误信息或者全部请求完成
+	select {
+	case err := <-errCh:
+		fmt.Println("Error:", err)
+	default:
+		fmt.Println("All requests completed successfully")
+	}
 }

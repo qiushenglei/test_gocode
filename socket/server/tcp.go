@@ -102,7 +102,7 @@ func ListenSignal(listener net.Listener, cancel context.CancelFunc) {
 func Send(c context.Context, p *proto.QProto) func() error {
 	return func() error {
 		defer fmt.Println("defer Send协程关闭")
-		//监听关闭信号
+		//监听关闭信号,或者是某一个goroutine err
 		var isDone bool
 		go func() {
 			select {
@@ -128,7 +128,7 @@ func Send(c context.Context, p *proto.QProto) func() error {
 func Recv(c context.Context, p *proto.QProto) func() error {
 	return func() error {
 		defer fmt.Println("defer Recv协程关闭")
-		// 监听关闭信号
+		// 监听关闭信号,或者是某一个goroutine err
 		var isDone bool
 		go func() {
 			select {
