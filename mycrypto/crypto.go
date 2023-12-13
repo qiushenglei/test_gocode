@@ -1,13 +1,15 @@
 package mycrypto
 
 import (
-	"crypto/md5"
+	"bytes"
 	"crypto/rand"
 	"crypto/rsa"
 	"crypto/x509"
 	"encoding/pem"
 	"fmt"
 	"github.com/qiushenglei/gin-skeleton/pkg/safe"
+	"io"
+	"math/big"
 	"os"
 )
 
@@ -113,10 +115,29 @@ func openFile(filename string, mode string) (file *os.File, err error) {
 	return file, nil
 }
 
-func Md5() {
-	str := "abcdef"
-	h := md5.New()
-	h.Write([]byte(str))
-	res := h.Sum(nil)
-	fmt.Printf("%x\n", res)
+func CryptRand() {
+	var b io.Reader
+	b = bytes.NewReader([]byte("12384567"))
+	for i := 0; i < 6; i++ {
+		//res, err := rand.Int(rand.Reader, big.NewInt(10))
+		res, err := rand.Int(b, big.NewInt(9))
+		if err != nil {
+			panic(err)
+		}
+		fmt.Println(res)
+	}
+
+}
+
+func CryptRand1() {
+	str := "1234567890"
+	for i := 0; i < 6; i++ {
+		res, err := rand.Int(rand.Reader, big.NewInt(9))
+		if err != nil {
+			panic(err)
+		}
+		num := res.Int64()
+		fmt.Println(num)
+		fmt.Println(str[num])
+	}
 }

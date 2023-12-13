@@ -3,18 +3,20 @@ package mypanic
 import (
 	"context"
 	"fmt"
+	"time"
 )
 
 func GolRecover() {
 	defer func() {
 		a := recover()
-		fmt.Println(a)
+		fmt.Println(a, 123)
 
 	}()
 
 	go func() {
 		panic("子协程panic")
 	}()
+	time.Sleep(10 * time.Second)
 }
 
 // Go 封装的go程，不用每次都手写panic

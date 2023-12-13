@@ -3,14 +3,21 @@ package main
 import (
 	"fmt"
 	"reflect"
-	"testproj/mychannel"
+	"testproj/mypanic"
 )
 
 func main() {
+	mypanic.GolRecover()
+	//mystrings.SubStrByByteLen()
+	//mycrypto.CryptRand()
+	//mycrypto.CryptRand1()
+	//mycrypto.Md5()
+	//mycrypto.Md5Sum()
+	//mynum.Change()
 	//mysync.Pool()
 	//mysync.Once()
 	//mychannel.MSender1Receiver()
-	mychannel.CaseInIO()
+	//mychannel.CaseInIO()
 	//mychannel.MSenderNReceiver()
 	//mychannel.RangeChan()
 	//mychannel.IsClosed()

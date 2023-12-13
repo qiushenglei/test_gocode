@@ -1,0 +1,28 @@
+syntax="proto3";
+
+// package  proto文件的包名(与go无关)  生成的语言类放在什么包里面  这个package必须紧跟着syntax="proto3"
+package chat;
+
+// 定义生成的pb文件go的package名
+option go_package = "/myproto";
+
+
+message Message {
+  int64 seqId = 1;
+  int64 sender  = 2;
+  int64  receiver = 3;
+  int64 forwarder = 4;
+  int64 groupId = 5;
+  int64 msgType = 6;
+  int64 msgFlag = 7;
+  int64 timestamp= 8;
+  string mid = 9;
+  string replyId = 10;
+  string  data = 11;
+  string version = 12;
+  string  uuid = 13;
+  string nickname = 14;
+  string avatar = 15;
+  string  qid = 16;
+  int64 globalId = 17;
+}

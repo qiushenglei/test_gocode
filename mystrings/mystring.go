@@ -57,9 +57,16 @@ func SubStrMbLen() {
 
 func SubStrByByteLen() {
 	str := "我是发😒string"
+	str1 := "我是发😒"
+	str2 := "😒"
+	str3 := "我"
 	start, end := 0, 0
 
 	sl := len(str)
+	sl1 := len(str1)
+	sl2 := len(str2)
+	sl3 := len(str3)
+	fmt.Println(sl1, sl2, sl3)
 
 	runeStr := []rune(str)
 	rl := len(runeStr)
