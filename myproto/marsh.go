@@ -1,6 +1,7 @@
 package myproto
 
 import (
+	"encoding/hex"
 	"encoding/json"
 	"fmt"
 	"google.golang.org/protobuf/proto"
@@ -59,18 +60,23 @@ func Marshal() {
 	fmt.Println(string(hexStr))
 }
 
-func StructCopy() {
-	str1 := "MemberSingleChat_5849593942124239"
-	str := `
-{"mid":"5971273533215482042","seqId":19,"sender":5901959374578073,"receiver":5901959374578097,"forwarder":0,"replyId":"5971273533198704779","groupId":5849593942124239,"msgType":1,"msgFlag":1,"data":"G08YPNeV8eaBDOj9HVttxKhEgYjdZG1IxWuwV8EGJuaZ/RrbpBqemREWTF8EEjVS","timestamp":1702456727869,"version":"","uuid":"f9bcccdcda4747fa88b8413f5117b36c","clientType":"PressureTest","address":"127.0.0.1","deviceId":"2D4EB99F-2B6E-5A43-A76A-902211C9C1DD","delIds":[],"pinTopIds":[],"qid":"","globalId":322342,"backup1":"encryptVersion1","userIds":[],"backup2":"","backup3":"","backup4":0,"createTime":"2023-12-13T16:38:47+08:00","updateTime":"2023-12-13T16:38:47+08:00","isEdit":0,"isDelete":0,"isQueue":0}
-`
+func Base646Decode() {
+	str := "2d2397dee6a4093bde5f60593166df44f503892ad94cb929e32decc1e3e10e7ced79c77aaf35c673ffabfdb197b58a6d4f3db8a595948460f0618085939751e70e288b7a50167fb8af481294561483c17b9ab793ec75da436075074ef2fd539ece64a4e183a0280f4829771acfd9di"
+	str = "2d2397dee6a4093bde5f60593166df44f503892ad94cb929e32decc1e3e10e7ced79c77aaf35c673ffabfdb197b58a6d4f3db8a595948460f0618085939751e70e288b7a50167fb8af481294561483c17b9ab793ec75da436075074ef2fd539ece64a4e183a0280f4829771acfd9d"
+	str = "47406ac2cf4f6d78ed00f57bb0d274613722491e7bc2a906b1d5f3268d6a17a121856d31ef6d04c2932839c46b1eb399fed66270b23fbda87c29411df67b7edebd91ac4e1b4bf77a"
 
-	str2 := "MemberReadSingleMessage_5849593942124239_5901959374578097"
-	str3 := 19
-
-	MemberGroupChat_5849593942124241
-	{"mid":"5966858835753707894","seqId":10,"sender":5901959374578073,"receiver":0,"forwarder":0,"replyId":"","groupId":5849593942124241,"msgType":2,"msgFlag":1,"data":"mypLGAqtBuzy2SDzujKeSg==","timestamp":1702300627518,"version":"","uuid":"1d9e4b2c30034c55bf45a7f3451c8544","clientType":"mac","address":"18.166.165.255","deviceId":"2D4EB99F-2B6E-5A43-A76A-902211C9C1DD","delIds":[],"pinTopIds":[],"qid":"","globalId":317542,"backup1":"encryptVersion1","userIds":[],"backup2":"","backup3":"","backup4":0,"createTime":"2023-12-11T21:17:07+08:00","updateTime":"2023-12-11T21:17:07+08:00","isEdit":0,"isDelete":0,"isQueue":0}
-	MemberReadGroupMessage_5849593942124241_5901959374578097
-	10
-
+	var b []byte
+	//_, err := hex.Decode([]byte(str), b)
+	b, err := hex.DecodeString(str)
+	if err != nil {
+		panic(err)
+	}
+	readmsg := new(Message)
+	err = proto.Unmarshal(b, readmsg)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(string(b))
 }
+
+// d4e3dc41cbb4c6171f07dd29f579010782a0c1d3cd544764b50d3238795fadfdcb26039042082aa1c2fe33ebc51f953cfa1b932c39bdd03b96f67923e58de87192acd137a86077ff869610df38b25c392976962313c6fb0ae93b38100330223db0eca08aa61d42a588ffad3eba157a77dea80d6748ea3be487efcefff0f0ce6e18c68680741d9e0ddc1ffa0658a111533c0fe78d69dc8e29dc3508b4ea90081a

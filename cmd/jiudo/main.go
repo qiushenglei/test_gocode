@@ -6,4 +6,5 @@ import (
 
 func main() {
 	myproto.Marshal()
+	myproto.Base646Decode()
 }
