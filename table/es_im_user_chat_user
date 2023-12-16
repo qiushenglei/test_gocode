@@ -1,259 +1,259 @@
 {
-"es_im_user_chat_user": {
-"mappings": {
-"properties": {
-"@timestamp": {
-"type": "date"
-},
-"@version": {
-"type": "text",
-"fields": {
-"keyword": {
-"type": "keyword",
-"ignore_above": 256
-}
-}
-},
-"authId": {
-"type": "text",
-"fields": {
-"keyword": {
-"type": "keyword",
-"ignore_above": 256
-}
-}
-},
-"authKey": {
-"type": "text",
-"fields": {
-"keyword": {
-"type": "keyword",
-"ignore_above": 256
-}
-}
-},
-"avatar": {
-"type": "text",
-"fields": {
-"keyword": {
-"type": "keyword",
-"ignore_above": 256
-}
-}
-},
-"createdAt": {
-"type": "date"
-},
-"createdById": {
-"type": "text",
-"fields": {
-"keyword": {
-"type": "keyword",
-"ignore_above": 256
-}
-}
-},
-"desc": {
-"type": "text",
-"fields": {
-"keyword": {
-"type": "keyword",
-"ignore_above": 256
-}
-}
-},
-"email": {
-"type": "text",
-"fields": {
-"keyword": {
-"type": "keyword",
-"ignore_above": 256
-}
-}
-},
-"emailMd5": {
-"type": "text",
-"fields": {
-"keyword": {
-"type": "keyword",
-"ignore_above": 256
-}
-}
-},
-"esIndex": {
-"type": "text",
-"fields": {
-"keyword": {
-"type": "keyword",
-"ignore_above": 256
-}
-}
-},
-"event": {
-"properties": {
-"original": {
-"type": "text",
-"fields": {
-"keyword": {
-"type": "keyword",
-"ignore_above": 256
-}
-}
-}
-}
-},
-"firstName": {
-"type": "text",
-"fields": {
-"keyword": {
-"type": "keyword",
-"ignore_above": 256
-}
-}
-},
-"forgotPasswordTips": {
-"type": "text",
-"fields": {
-"keyword": {
-"type": "keyword",
-"ignore_above": 256
-}
-}
-},
-"id": {
-"type": "text",
-"fields": {
-"keyword": {
-"type": "keyword",
-"ignore_above": 256
-}
-}
-},
-"isInside": {
-"type": "text",
-"fields": {
-"keyword": {
-"type": "integer",
-"ignore_malformed": false,
-"coerce": true
-}
-}
-},
-"lastName": {
-"type": "text",
-"fields": {
-"keyword": {
-"type": "keyword",
-"ignore_above": 256
-}
-}
-},
-"nickname": {
-"type": "text"
-},
-"phone": {
-"type": "text",
-"fields": {
-"keyword": {
-"type": "keyword",
-"ignore_above": 256
-}
-}
-},
-"phoneCountryPrefix": {
-"type": "text",
-"fields": {
-"keyword": {
-"type": "keyword",
-"ignore_above": 256
-}
-}
-},
-"phoneMd5": {
-"type": "text",
-"fields": {
-"keyword": {
-"type": "keyword",
-"ignore_above": 256
-}
-}
-},
-"reserveInt1": {
-"type": "long"
-},
-"reserveInt2": {
-"type": "long"
-},
-"reserveInt3": {
-"type": "long"
-},
-"reserveString1": {
-"type": "text",
-"fields": {
-"keyword": {
-"type": "keyword",
-"ignore_above": 256
-}
-}
-},
-"reserveString2": {
-"type": "text",
-"fields": {
-"keyword": {
-"type": "keyword",
-"ignore_above": 256
-}
-}
-},
-"reserveString3": {
-"type": "text",
-"fields": {
-"keyword": {
-"type": "keyword",
-"ignore_above": 256
-}
-}
-},
-"signIntroduce": {
-"type": "text",
-"fields": {
-"keyword": {
-"type": "keyword",
-"ignore_above": 256
-}
-}
-},
-"status": {
-"type": "long"
-},
-"token": {
-"type": "text",
-"fields": {
-"keyword": {
-"type": "keyword",
-"ignore_above": 256
-}
-}
-},
-"updateAt": {
-"type": "date"
-},
-"userName": {
-"type": "text"
-},
-"userSecret": {
-"type": "text",
-"fields": {
-"keyword": {
-"type": "keyword",
-"ignore_above": 256
-}
-}
-},
-"userType": {
-"type": "long"
-}
-}
-}
-}
+    "es_im_user_chat_user": {
+        "mappings": {
+            "properties": {
+                "@timestamp": {
+                    "type": "date"
+                },
+                "@version": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "authId": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "authKey": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "avatar": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "createdAt": {
+                    "type": "date"
+                },
+                "createdById": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "desc": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "email": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "emailMd5": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "esIndex": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "event": {
+                    "properties": {
+                        "original": {
+                            "type": "text",
+                            "fields": {
+                                "keyword": {
+                                    "type": "keyword",
+                                    "ignore_above": 256
+                                }
+                            }
+                        }
+                    }
+                },
+                "firstName": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "forgotPasswordTips": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "id": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "isInside": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "integer",
+                            "ignore_malformed": false,
+                            "coerce": true
+                        }
+                    }
+                },
+                "lastName": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "nickname": {
+                    "type": "text"
+                },
+                "phone": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "phoneCountryPrefix": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "phoneMd5": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "reserveInt1": {
+                    "type": "long"
+                },
+                "reserveInt2": {
+                    "type": "long"
+                },
+                "reserveInt3": {
+                    "type": "long"
+                },
+                "reserveString1": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "reserveString2": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "reserveString3": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "signIntroduce": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "status": {
+                    "type": "long"
+                },
+                "token": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "updateAt": {
+                    "type": "date"
+                },
+                "userName": {
+                    "type": "text"
+                },
+                "userSecret": {
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        }
+                    }
+                },
+                "userType": {
+                    "type": "long"
+                }
+            }
+        }
+    }
 }
