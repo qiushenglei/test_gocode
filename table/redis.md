@@ -24,7 +24,8 @@
 - `CHAT_USER_CHAT_LIST_X_xuserid_xchatid`: 私聊会话表行数据
   - `type`: string
   - `val`: mysql的chat_user_list.user_chat_list_x表结构体
-
+  - 更新入口:
+    - chatapi 创建、删除、获取私聊
 
 # 群聊
 
@@ -55,12 +56,13 @@
   - `val`: mysql的chat_group.user_group表结构体
   - 更新入口:
     - chatapi 创建、修改、删除群接口(这里为什么不扔到chatjob里面？？)
-  
 
 
 - `CHAT_UserGroupUser_X_xuserid_xgroupid`: 
-  - `type`: 未知
-  - `val`: 未知
+  - `type`: string
+  - `val`: mysql chat_group.user_group_user_x表结构体
+  - 更新入口:
+    - chatapi 创建、删除、编辑、获取群聊消息
 
 # 消息列 message queue
 
