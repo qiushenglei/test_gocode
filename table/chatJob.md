@@ -23,7 +23,7 @@
 ## 工作3
 
 - crontab: 0 0 3 * * ?(每个月3号00:00执行一次)
-- 作用: 每月更新`chat_group.user_group_user_xuserid(用户和群聊的关联会话表)`的 、`read_max_id(本人已读最大seqid)`、`other_read_max_id(除自己以外的会话最大seqid)`
+- 作用: 每月更新`chat_group.user_group_user_xuserid(用户和群聊的关联会话表)`的 、`read_max_id(本人已读最大seqid)`、`other_read_max_id(自己的消息中，最大被已读seqid)`
 
 ## 工作4
 
