@@ -23,3 +23,9 @@
 
 - `chat_pin_record`：置顶消息表
 - `chat_del_record`：删除消息的记录表(批量删除时，就会插入多条)
+- `user_login_device_x`：用户设备在线登录时间
+
+# chat_edge
+
+- `chat_pin_record`：置顶消息表
+- `chat_del_record`：删除消息的记录表(批量删除时，就会插入多条)
