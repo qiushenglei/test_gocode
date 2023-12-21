@@ -19,8 +19,8 @@ var (
 const (
 	PullDomain = "pull.eo6rgej.com"
 	PushDomain = "push1.abcjzfyh8.com"
-	PushKey    = ""
-	PUllKey    = ""
+	PushKey    = "4ba756c46f41aa4c264949fc93d94c7a"
+	PUllKey    = "f72543f453443f64dd3de241fc7b496d"
 )
 
 func main() {
