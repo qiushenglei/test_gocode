@@ -29,3 +29,15 @@
 
 - crontab: 0 0 4 * * ?(每个月4号00:00执行一次)
 - 作用: 每月更新用户在线最新时间`chat_edge.user_login_device`
+
+# SmsSendJob 短信发送
+
+- crontab: 每10s扫一次 sms_send_task表
+- 作用: 异步发送短信
+
+# UserChatHistoryRemoveJob
+
+## 工作1
+
+- command: `cmd -task clearUserData -delUserNames username1,username2,username3`
+- 

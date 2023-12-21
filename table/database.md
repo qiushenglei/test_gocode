@@ -29,3 +29,9 @@
 
 - `chat_pin_record`：置顶消息表
 - `chat_del_record`：删除消息的记录表(批量删除时，就会插入多条)
+
+
+# chat_notify
+
+- `sms_send_task`：短信发送任务
+- `sms_send_detail`：短信发送任务具体内容
