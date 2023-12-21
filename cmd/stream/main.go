@@ -26,27 +26,32 @@ const (
 func main() {
 	flag.Parse()
 
-	var key string
-	var domain string
 	if *p == 1 {
-		domain = PushDomain
-		key = PushKey
+		pushStream()
 	} else {
-		domain = PullDomain
-		key = PUllKey
+		pullStream()
 	}
-	url := getUrl(domain, key)
-	url = fmt.Sprintf("\"%s\"", url)
-	// 拉流
-	//err := exec.Command("ffmpeg", "-re", "-i", url, "-vcodec", "copy", "-acodec", "copy", "-f", "flv", *file).Run()
+}
 
-	fmt.Println("ffmpeg", "-re", "-i", *file, "-f", "flv", url)
+func pushStream() {
+	url := getUrl(PushDomain, PushKey)
+	fmt.Println("ffmpeg", "-i", *file, "-f", "flv", url)
 	//推流
 	err := exec.Command("ffmpeg", "-re", "-i", *file, "-f", "flv", url).Run()
 	if err != nil {
 		panic(err)
 	}
+}
 
+func pullStream() {
+	url := getUrl(PullDomain, PUllKey)
+	file := fmt.Sprintf("flvfile/%v.%s", time.Now().Unix(), "flv")
+	fmt.Println("ffmpeg", "-i", url, "-c", "copy", file)
+	//推流
+	err := exec.Command("ffmpeg", "-i", url, "-c", "copy", file).Run()
+	if err != nil {
+		panic(err)
+	}
 }
 
 func getUrl(domain, key string) string {
