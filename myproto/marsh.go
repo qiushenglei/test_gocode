@@ -48,11 +48,43 @@ func Marshal() {
 		Uuid:      "f9bcccdcda4747fa88b8413f5117b36c",
 		Nickname:  "yyds1123 usopp",
 	}
+
+	pin := &Message{
+		SeqId:     48,
+		Sender:    5901959374578097,
+		Receiver:  5901959374578073,
+		Forwarder: 0,
+		ReplyId:   "",
+		GroupId:   5849593942124239,
+		MsgType:   1,
+		MsgFlag:   15002,
+		Data:      "{\"avatar\":\"\",\"createTime\":\"\",\"data\":\"{\\\"text\\\":\\\"dsf\\\"}\",\"forwarder\":0,\"globalId\":338110,\"groupId\":5849593942124239,\"isDelete\":false,\"isEdit\":false,\"isRead\":false,\"messageQueue\":\"\",\"mid\":\"5994708739167364718\",\"msgFlag\":1,\"msgType\":1,\"nickName\":\"yyds usopp1\",\"pin\":true,\"pinMsgFlag\":0,\"pinUserId\":0,\"qid\":\"0\",\"receiver\":5901959374578073,\"replyId\":\"0\",\"sender\":5901959374578097,\"seqId\":48,\"timestamp\":1704109920287,\"uuid\":\"9240ba9951c24b66b848b19e75fd09cf\"}",
+		Timestamp: 0,
+		Uuid:      "adc927e8f7cd4be3af20830ab3a3dbf8",
+		Nickname:  "yyds1123 usopp",
+	}
+
+	delete := &Message{
+		SeqId:     0,
+		Sender:    5901959374578097,
+		Receiver:  5901959374578073,
+		Forwarder: 0,
+		ReplyId:   "",
+		GroupId:   5849593942124239,
+		MsgType:   1,
+		MsgFlag:   16002,
+		Data:      "[{\"mid\":\"5994708739167364951\",\"qid\":\"\",\"seqId\":51,\"timestamp\":1704118908237}]",
+		Timestamp: 1704119543477,
+		Uuid:      "0d7c2c5c39f6423a8c98fa6f265e1dab",
+		Nickname:  "yyds usopp1",
+	}
 	o := new(Message)
 	err := json.Unmarshal([]byte(str), o)
 
 	b, err := proto.Marshal(readmsg)
 	b, err = proto.Marshal(replymsg)
+	b, err = proto.Marshal(pin)
+	b, err = proto.Marshal(delete)
 	if err != nil {
 		panic(err)
 	}

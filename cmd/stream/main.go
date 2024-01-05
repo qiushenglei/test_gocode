@@ -30,7 +30,8 @@ func main() {
 	//dns1()
 
 	//
-	Push2(*file)
+	//Push2(*file)
+	Pull2("flvfile/1241414.flv")
 
 }
 
