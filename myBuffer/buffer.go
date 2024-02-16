@@ -69,3 +69,24 @@ func BufioReadSliceBlock() ([]byte, error) {
 	}
 	return nil, nil
 }
+
+func ReadLinePrefix() {
+	s := strings.NewReader("ABC\nDEF\r\nGHI\r\nJKL")
+	br := bufio.NewReader(s)
+
+	w, isPrefix, _ := br.ReadLine()
+	fmt.Printf("%q %v\n", w, isPrefix)
+	// "ABC" false
+
+	w, isPrefix, _ = br.ReadLine()
+	fmt.Printf("%q %v\n", w, isPrefix)
+	// "DEF" false
+
+	w, isPrefix, _ = br.ReadLine()
+	fmt.Printf("%q %v\n", w, isPrefix)
+	// "GHI" false
+
+	w, isPrefix, _ = br.ReadLine()
+	fmt.Printf("%q %v\n", w, isPrefix)
+	// "GHI" false
+}

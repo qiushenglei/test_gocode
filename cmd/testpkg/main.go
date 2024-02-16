@@ -8,7 +8,8 @@ func main() {
 	//mystrings.StringRead()
 	//myBuffer.BytesBuff()
 	//myBuffer.FileBuff()
-	myBuffer.BufioReadSliceBlock()
+	//myBuffer.BufioReadSliceBlock()
+	myBuffer.ReadLinePrefix()
 
 	//mystrings.Postion()
 	//mybufio.BytesBuff()

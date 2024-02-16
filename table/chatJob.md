@@ -1,3 +1,11 @@
+# BotSendMessageJob
+
+- 作用：发送机器人消息，就是一个http请求(开发环境配置项缺失，启动不了，jenkins也没有这个工程)
+
+# deviceReportJob
+- 作用：用户
+- 
+
 # LoginLogConsumerListenJob
 - 作用: 消费kafka消息 给用户登录客户端记入es日志落库
 - 生产入口: chatapi登录接口
@@ -40,4 +48,24 @@
 ## 工作1
 
 - command: `cmd -task clearUserData -delUserNames username1,username2,username3`
-- 
+- 作用：清除用户信息
+
+## 工作2
+
+- go(updateDeleteTimeOfChatGroup)
+- 作用：里面写的mysql条件很奇怪，不确定。清除群聊会话信息，`chat_group.user_group`表有个清除会话策略字段`delete_strategy`，根据它清除mysql
+
+## 工作3
+
+- go(DeleteUploadFile)
+- 作用：清除上传文件 `chat_edge.up_file_info`
+
+## 工作4
+- go(trimUserQueue)
+- 作用：把用户3个月前参加过的消息列集合清除，只是清除了redis的key:`chat_user_message_queue_xuserid`
+
+
+# UserPasswordGenerator
+
+- 作用：给输入文件中的用户名 创建密码
+- 一次性脚本，非常驻

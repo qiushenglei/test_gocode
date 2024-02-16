@@ -5,6 +5,7 @@
 - `user_friends_x`：用户联系人表
 
 - `user_notice_list_user`：用户组表的用户(目前来看只有@功能用到了)
+- `user_jpush`：激光推送(推送消息给客户端)
 
 
 # chat_user_list库
@@ -24,14 +25,19 @@
 - `chat_pin_record`：置顶消息表
 - `chat_del_record`：删除消息的记录表(批量删除时，就会插入多条)
 - `user_login_device_x`：用户设备在线登录时间
-
-# chat_edge
-
-- `chat_pin_record`：置顶消息表
-- `chat_del_record`：删除消息的记录表(批量删除时，就会插入多条)
+- `up_file_info`：用户上传文件
+- `user_login_device_x`：用户登录设备表
+- `device_report`：
+- `device_country`：统计有哪些国家登录
 
 
 # chat_notify
 
 - `sms_send_task`：短信发送任务
 - `sms_send_detail`：短信发送任务具体内容
+
+
+# chat_emoji
+
+- `user_emoji_offical`：官方提供的
+- `user_emoji_custom_x`：用户自定义的emoji表情

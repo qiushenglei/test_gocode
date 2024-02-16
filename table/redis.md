@@ -7,12 +7,20 @@
 
 # 私聊
 
-- `MemberSingleChat_xchatid`: 私聊会话最新消息
+- `MemberSingleChat_xchatid`: 私聊会话最新可见消息(部分操作消息不可见，被排查再外)
   - `type`: string
   - `val`: mdata.msg
   - 更新入口:
     - chatjob MessageConsumerListenJob 入库es，处理**发送**私聊消息方法(handleHistoryMessage)
     - chatjob MessageConsumerListenJob 入库es，处理**编辑**私聊消息方法(handleSingleMessage)
+
+- `MemberSingleChat_xchatid_xuserid`: 用户私聊会话最新可见消息(部分操作消息不可见，被排查再外)
+  - `type`: string
+  - `val`: mdata.msg
+  - 更新入口:
+    - chatjob MessageConsumerListenJob 入库es，处理**发送**私聊消息方法(handleHistoryMessage)
+    - chatjob MessageConsumerListenJob 入库es，处理**编辑**私聊消息方法(handleSingleMessage)
+
 
 - `MemberReadSingleMessage_xchatid_xluserid`: 私聊最大已读seqid
   - `type`: int
@@ -27,14 +35,23 @@
   - 更新入口:
     - chatapi 创建、删除、获取私聊
 
+- `MemberSingleChatList_xuserid`：用户私聊会话列表
+  - `type`: int
+  - `val`: chatId
+
 # 群聊
 
-- `MemberGroupChat_xgroupid`: 私聊会话最新消息
+- `MemberGroupChat_xgroupid`: 群聊会话最新消息
   - `type`: string
   - `val`: mdata.msg
   - 更新入口: 
     - chatjob MessageConsumerListenJob 入库es，处理群聊消息方法(handleGroupMessage)
 
+- `MemberGroupChat_xchatid_xuserid`：群聊 用户最新发发送消息
+  - `type`: string
+  - `val`: mdata.msg
+  - 更新入口:
+    - chatjob MessageConsumerListenJob 入库es，处理群聊消息方法(handleGroupMessage)
 
 - `MemberReadGroupMessage_xchatid_xluserid`: 群聊最大已读seqid
   - `type`: int
@@ -81,7 +98,7 @@
     - chatjob MessageConsumerListenJob 入库es，处理**删除**消息列消息(DeleteQueueMsg)
 
 
-- `chat_user_mesage_queue_xuserid`: 用户参加的消息列集合（用户A参加了 x,y,z消息列）
+- `chat_user_message_queue_xuserid`: 用户参加的消息列集合（用户A参加了 x,y,z消息列）
   - `type`: zset有序集合
   - `val`: `{score: @timestamp, val:@qid}`
   - 更新入口:
