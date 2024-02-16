@@ -117,3 +117,23 @@ func Delete() {
 func ThreadSafe() {
 	//sync.Map{}
 }
+
+type AA struct {
+	data []int
+}
+
+func TestNil() (res *AA) {
+	var a map[int]string
+	fmt.Println(len(a))
+	return
+}
+
+func TestNil1() (res map[int]int) {
+
+	return
+}
+
+func TestSNil() {
+	res := TestNil1()
+	fmt.Println()
+}
