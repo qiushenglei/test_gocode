@@ -1,0 +1,30 @@
+syntax = "proto3";
+option go_package = ".//;gengrpcsnow";
+package gengrpcsnow;
+
+//protoc --proto_path=../snowid_proto/ --go_out=./snowid_proto/  --go_opt=paths=source_relative  --go-grpc_out=./snowid_proto/  --go-grpc_opt=paths=source_relative  snowid.proto
+//protoc --proto_path=./snowid_proto/ --go_out=./snowid_proto/  --go_opt=paths=source_relative  --go-grpc_out=./snowid_proto/  --go-grpc_opt=paths=source_relative  snowid.proto
+service GRPCSnowService {
+  // 获取雪花ID
+  rpc GetSnowID(SnowIDReq) returns (Resp) {}
+
+  // 批量获取雪花ID
+  rpc GetBatchSnowID(BatchSnowIDReq) returns (BatchResp) {}
+
+}
+
+message SnowIDReq {int32 snowIdType = 1;}
+
+message Resp {
+  int32 code = 1;
+  string msg = 2;
+  uint64 data = 3;
+}
+
+message BatchSnowIDReq {int32 count = 1;int32 snowIdType = 2;}
+
+message BatchResp {
+  int32 code = 1;
+  string msg = 2;
+  repeated uint64 data = 3;
+}
