@@ -135,5 +135,5 @@ func TestNil1() (res map[int]int) {
 
 func TestSNil() {
 	res := TestNil1()
-	fmt.Println()
+	fmt.Println(res)
 }

@@ -3,11 +3,11 @@ package main
 import (
 	"fmt"
 	"reflect"
-	"testproj/mymap"
+	"testproj/mypath"
 )
 
 func main() {
-	mymap.TestSNil()
+	mypath.JoinPath()
 	//mypanic.GolRecover()
 	//mystrings.SubStrByByteLen()
 	//mycrypto.CryptRand()
