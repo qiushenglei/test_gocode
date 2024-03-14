@@ -3,8 +3,10 @@
 - `user_info`：用户表
 - `user_info_detail`：用户详情表
 - `user_friends_x`：用户联系人表
+- `user_department`：部门内管理员
 
-- `user_notice_list_user`：用户组表的用户(目前来看只有@功能用到了)
+- `user_notice_list`：用户组列表
+- `user_notice_list_user`：用户组用户(目前来看只有@功能用到了)
 - `user_jpush`：激光推送(推送消息给客户端)
 - `user_password_second_confirm`：用户二次验证
 
