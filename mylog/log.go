@@ -1,6 +1,7 @@
 package mylog
 
 import (
+	"fmt"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 	"os"
@@ -42,4 +43,8 @@ func Logger() {
 	_, trace, line, _ := runtime.Caller(0)
 	sugarLogger.Error("add log", line, trace)
 
+}
+
+func PrintColor() {
+	fmt.Printf("\033[1;40;32m%s\033[0m\n", "Hello, World!")
 }

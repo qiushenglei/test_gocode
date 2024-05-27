@@ -1,0 +1,29 @@
+ - `session_in_progress_key:user:xuserid:usertype:xusertype`: 会话用户未读数量
+   - type: Zset有序集合
+   - member: sessionid
+   - score: 用户未读数量
+   - 设置时机: 在客服和管理员 发送消息时 设置
+ - `sessions:session_id:xsessionid`: 会话基础消息
+   - type: string
+   - val: mdata.Sessions (mysql session表结构)
+   - 设置时机：在获取会话时，保存redis
+ - `session_user_poll:session_code:xsessionid`：会话中 正常对话的用户消息
+   - type: string
+   - val: []mdata.SessionUserPool
+   - 设置时机：在获取用户池时
+ - `v2session_records:visitor_id:xvisitorid:first_id:xfirstid:opt:xoptid`: 访客的历史列表
+   - type: string
+   - val: []mdata.SessionRecordsWithReadStatus
+ - `setting_dialogue:opt_id:xoptid`: 对话的 自动回复配置
+   - type: string
+   - val:
+ - `last_key_xcsid`: 最后???
+   - type: string
+   - val:
+ - `加密（mdata.token）`: 这里是 访客创建会话 的token
+   - type: string
+   - val:mdata.token的结构体json string
+- `visitor:customer_id:xcid:opt_id:xoptid`、`visitor:visitor_uuid:xuuid:opt_id:xoptid`: 访客信息
+   - type: string
+   - val:mdata.opt
+- `opt:code:xoptcode`: 商户信息

@@ -3,11 +3,12 @@ package main
 import (
 	"fmt"
 	"reflect"
-	"testproj/mypath"
+	"testproj/mylog"
 )
 
 func main() {
-	mypath.JoinPath()
+	mylog.PrintColor()
+	//mypath.JoinPath()
 	//mypanic.GolRecover()
 	//mystrings.SubStrByByteLen()
 	//mycrypto.CryptRand()
